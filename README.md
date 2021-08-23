@@ -9,6 +9,7 @@ Broadcast, StartActivity, StartService などを活用して、拡張機能に�
 ## Version history
 ### t1.0a
 - Worked on Android 11, 10, 9, 8, 7
+- It also works on Android 5.1, but text updates behave suspiciously.
 - Changed the behavior of each version.
 - Error: App crashes when the last overlay text is stopped
 
