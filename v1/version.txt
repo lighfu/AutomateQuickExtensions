@@ -1,3 +1,4 @@
-4
+3
 t1.0a
 https://github.com/lighfu/AutomateQuickExtensions/raw/main/src/app-release-t1.0a-2.apk
+Test\nDescription
