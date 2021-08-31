@@ -11,3 +11,15 @@ To maintain the service, please enable the Service switch in the main activity.
 Also, OverlayView will no longer be supported. (We are working on a substitution plan).
 
 This is because of problems with Broadcast and the ordering method.
+
+[日本語]
+
+- OverlayView クラスが呼び出せなかった問題を解消しました。
+
+すみませんが、OverlayView を使用できない状態でしたので、その修正です。
+
+そして、OverlayView からフォアグラウンド用の通知が削除されました。
+サービスを維持するには、メインアクティビティーのService スイッチを有効にしてください。
+
+また、OverlayView は今後サポートされなくなります。(代用案を作成中です)
+　Broadcast と、オーダー方法に問題があるためです。
