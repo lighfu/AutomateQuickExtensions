@@ -1,2 +1,13 @@
-3
-1.0.alpha
+4
+1.0.1.alpha
+https://github.com/lighfu/AutomateQuickExtensions/releases/download/1.0.1.alpha-Build.4/app-release-1.0.1.alpha.apk
+- Fixed an issue where the OverlayView class could not be called.
+
+Sorry, the OverlayView was not available, so this is the fix.
+
+Foreground notifications have been removed from OverlayView.
+To maintain the service, please enable the Service switch in the main activity.
+
+Also, OverlayView will no longer be supported. (We are working on a substitution plan).
+
+This is because of problems with Broadcast and the ordering method.
