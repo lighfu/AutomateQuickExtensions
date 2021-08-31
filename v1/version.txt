@@ -8,7 +8,7 @@ Sorry, the OverlayView was not available, so this is the fix.
 Foreground notifications have been removed from OverlayView.
 To maintain the service, please enable the Service switch in the main activity.
 
-Also, OverlayView will no longer be supported. (We are working on a substitution plan).
+Also, OverlayView will no longer be supported. (Working on a substitution plan).
 
 This is because of problems with Broadcast and the ordering method.
 
