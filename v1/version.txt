@@ -1,24 +1,24 @@
-5
-1.1.alpha
-https://github.com/lighfu/AutomateQuickExtensions/releases/download/1.1.alpha-build.5/app-release.apk
-- Added FFmpegOrder
-- Internal structure change
+6
+1.2
+https://github.com/lighfu/AutomateQuickExtensions/releases/download/1.2-build.6/app-release.apk
+- OverlayText's rewritten code is now stable
 
-From this version, you can use the experimentally introduced FFmpeg.
+If you want to use OverlayText, use "OverlayTextOrder" in "Broadcast send".
 
-OverlayView will no longer be supported. (Working on a substitution plan).
+In addition, the OverlayText feature has been added.
+It is now possible to get touch, long touch, and end events.
 
-"com.lighfu.quickextensions.ToastOrderService" will be deprecated soon.
-Instead, use "ToastOrder" in Broadcast send.
-You need to change the class name.
-Just change it to "com.lighfu.quickextensions.orders.ToastOrder".
+IDs are now important when internal code is changed.
+Please be very careful not to duplicate IDs.
 
+----------------------
 
-OverlayView　はサポートされなくなります。 （代替計画に取り組んでいます）。
+- OverlayText　の書き換えコードが安定しました.
 
-「com.lighfu.quickextensions.ToastOrderService」はまもなく非推奨になります。
-代わりに、”Broadcast send”　で「ToastOrder」を使用してください。
-クラス名を変更する必要があります。
-「com.lighfu.quickextensions.orders.ToastOrder」に変更するだけです。
+OverlayTextを使用したい場合は、"Broadcast send "の "OverlayTextOrder "を使用してください。
 
-Extrasの変更は必要ありません。
+また、OverlayTextの機能が追加されました。
+タッチ、ロングタッチ、終了イベントを取得できるようになりました。
+
+内部コードが変更された際に、IDが重要になりました。
+IDが重複しないように十分注意してください。
