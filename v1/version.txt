@@ -1,25 +1,24 @@
-4
-1.0.1.alpha
-https://github.com/lighfu/AutomateQuickExtensions/releases/download/1.0.1.alpha-Build.4/app-release-1.0.1.alpha.apk
-- Fixed an issue where the OverlayView class could not be called.
+5
+1.1.alpha
+https://github.com/lighfu/AutomateQuickExtensions/releases/download/1.1.alpha-build.5/app-release.apk
+- Added FFmpegOrder
+- Internal structure change
 
-Sorry, the OverlayView was not available, so this is the fix.
+From this version, you can use the experimentally introduced FFmpeg.
 
-Foreground notifications have been removed from OverlayView.
-To maintain the service, please enable the Service switch in the main activity.
+OverlayView will no longer be supported. (Working on a substitution plan).
 
-Also, OverlayView will no longer be supported. (Working on a substitution plan).
+"com.lighfu.quickextensions.ToastOrderService" will be deprecated soon.
+Instead, use "ToastOrder" in Broadcast send.
+You need to change the class name.
+Just change it to "com.lighfu.quickextensions.orders.ToastOrder".
 
-This is because of problems with Broadcast and the ordering method.
 
-[日本語]
+OverlayView　はサポートされなくなります。 （代替計画に取り組んでいます）。
 
-- OverlayView クラスが呼び出せなかった問題を解消しました。
+「com.lighfu.quickextensions.ToastOrderService」はまもなく非推奨になります。
+代わりに、”Broadcast send”　で「ToastOrder」を使用してください。
+クラス名を変更する必要があります。
+「com.lighfu.quickextensions.orders.ToastOrder」に変更するだけです。
 
-すみませんが、OverlayView を使用できない状態でしたので、その修正です。
-
-そして、OverlayView からフォアグラウンド用の通知が削除されました。
-サービスを維持するには、メインアクティビティーのService スイッチを有効にしてください。
-
-また、OverlayView は今後サポートされなくなります。(代用案を作成中です)
-　Broadcast と、オーダー方法に問題があるためです。
+Extrasの変更は必要ありません。
