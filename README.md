@@ -22,6 +22,8 @@ Github の Issues で報告してもらえると助かります。
 Androidの自動化アプリケーションである、Automate のために作成された拡張機能アプリケーションです。
 主に、Automate にはない機能を搭載し、今後も仕様の変更や機能の追加などが行われます。ただし、例外を含めます。
 
+Quick Extensions for Automate はこれ以降、QeFaと呼んでいきます。
+
 ## 機能など
 - OverlayTextOrder (テキストを画面上にオーバーレイ表示)
 - DialogOrder (アイコン付きのダイアログ、その他)
@@ -34,14 +36,30 @@ Androidの自動化アプリケーションである、Automate のために作�
 | Orders  |   Start     | Support  | Description |
 |-------------|---------------|----------------|----------------------|
 | OverlayTextOrder | t1.0a | Android 4.1 - 11 | None |
-| DialogOrder    | ?     | Android 4.0+           | None |
-| FFmpegOrder | 1.1 | Android 4.1 - 10      | 今後は別パッケージをインストールして利用が可能になるよう調節します。 |
-| ToastOrder     | 1.0.alpha | Android 4.0+ | None |
+| DialogOrder    | 1.0           | Android 4.0+           | None |
+| FFmpegOrder | 1.1           | Android 4.1 - 10      | 今後は別パッケージをインストールして利用が可能になるよう調節します。 |
+| ToastOrder     | 1.0.alpha | Android 4.0+           | None |
 
 ## 使い方
+
 Automate の Broadcast Send / Recive ブロックを使用して拡張機能を実行、リクエストできます。
 要注意点として、拡張機能の設定で、Service を有効にする必要があります。
-Serviceを有効にした時点ですべての拡張機能へのアクセスを許可するという意味になります。
+
+![画像](https://i.gyazo.com/f485c0d8d7a43c4f2ccea644720740e3.png)
+
+Serviceを有効にした時点ですべての拡張機能へのアクセスを許可するという意味になります。 
+
+
+###
+ Extras の使い方
+----
+
+QeFaでは、機能のリクエストに、
+- パッケージ名
+- クラス名
+- アクション名 (QeFaでは、大体 **Order** で通ります。)
+- Extras
+が必要になります。
 
 ### 予定更新内容
 - 各オーダータイトルの変更
@@ -60,18 +78,15 @@ QeFa は１人の開発者によって作成されています。
 
 
 
-
-
-
 ----
 
 
 
 
-
-
-
 # OverlayText
+
+![画像](https://i.gyazo.com/84e99d32a1554dc36e9401c3e62f5e51.png)
+
 TextView を画面上に表示することが可能です。
 
 ユーザーは、テキスト、色、背景色、サイズ、タッチアンカー、位置などを調節することができます。
@@ -275,11 +290,19 @@ resultCode as Int, resultStatus as String
 
 
 # FFmpegOrder
+
+![mobile-ffmpeg-logo-v7](https://raw.githubusercontent.com/tanersener/mobile-ffmpeg/master/docs/assets/mobile-ffmpeg-logo-v7.png)
+
+FFmpegMobile: [https://github.com/tanersener/mobile-ffmpeg](https://github.com/tanersener/mobile-ffmpeg)
+
+QeFaでは FFmpegMobile を使用していますが、このプロジェクトは停止しているため、[FFmpeg-Kit](https://github.com/tanersener/ffmpeg-kit) にパッケージを変更する予定です。
+
+
+
 FFmpegOrder は、FFmpegコマンドラインを提供する特別な機能です。
 
 FFmpegのほぼ全ての機能を利用することができ、
 動画、音声ファイルのエンコードやデコードを行うことができます。
-
 
 > この機能はAPKサイズを巨大化させるため、現在、ライブラリが同梱されていますが、com.lighfu.quickextensions の他のパッケージに移行する予定で、今後は、この別のパッケージをインストールしてFFmpegを利用できるようにする予定です。
 
@@ -388,12 +411,7 @@ FFmpegで処理中の進捗を取得することができます。
 
 
 
-
-
 ----
-
-
-
 
 
 
@@ -402,3 +420,132 @@ FFmpegで処理中の進捗を取得することができます。
 ToastOrder は基本四角形のトーストを提供します。
 
 文字色、背景色、サイズ、Padding等を指定してスタイル付けすることができます。
+
+## 必須条件
+ほぼ全てのAndroidで動作可能です。
+
+## 注意点
+- トーストの表示タイミングはAndroidOSによって管理されています。
+
+## トーストを表示する
+
+> 
+
+**Package**: `com.lighfu.quickextensions`
+
+**Class**: `com.lighfu.quickextensions.orders.ToastOrder`
+
+**Action**: `Order`
+
+### Extras:
+
+
+"text": String
+
+トーストに表示したい文字
+
+----
+
+"size" as Float: Number
+
+トーストに表示する文字の大きさ。 px単位
+
+----
+
+"color" as Int: 0xAARRGGBB
+Int 型として、16進数で表記する。
+
+AA が、16進数のアルファ値。 (00-FF)
+
+RR が、16進数のアルファ値。 (00-FF)
+
+GG が、16進数のアルファ値。 (00-FF)
+
+BB が、16進数のアルファ値。 (00-FF)
+
+赤色の場合は、
+
+`"color" as Int: 0xFFFF0000`
+
+緑色の場合は、
+
+`"color" as Int: 0xFF00FF00`
+
+青色の場合は、
+
+`"color" as Int: 0xFF0000FF`
+
+**0x** フラグを使用して16進数で分かりやすい形式として、扱うことをオススメします。
+
+> 0x フラグは、Automate内で数値に変換されます。
+
+例えば、
+**0xFFFF0000** は **-65536** に変換されます。
+（0xFFFF0000 は 赤色です）
+
+----
+
+"**backcolor**" as Int: 0xAARRGGBB
+
+背景色を決めます。上記と色の指定はまったく同じです。
+
+----
+
+"**duration**" as Int: 0 or 1
+
+トーストの表示時間を制御するものです。
+
+- **0** では、トースト表示時間は短いです。
+- **1** では、トースト表示時間は少し長めです。
+
+**注意**: これは秒数ではありません。
+
+----
+
+**padding**: [Left, Top, Right, Bottom]
+
+"**padding**" as IntArray: [64, 64, 64, 64]
+
+文字と外枠との空間の幅を設定できます。
+
+----
+
+**offset**: [x, y]
+
+"**offset**" as IntArray: [0, 0]
+
+ピクセル単位でトーストの位置を微調整できます。
+
+----
+
+"**gravity**" as StringArray: ["CENTER"]
+
+**gravity** as StringArray: [String]  もしくは、
+
+**gravity** as StringArray: [String, String]
+
+使える重力フラグは以下の通りです。
+
+`"LEFT", "RIGHT", "TOP", "BOTTOM", "CENTER"`
+
+必ず単体の重力フラグを指定するときでも、StringArray、文字列配列として扱う必要があります。
+
+たとえば、右寄せの場合。
+```
+"gravity" as StringArray: ["RIGHT"]
+```
+
+右寄せ & 下方 の場合。
+```
+"gravity" as StringArray: ["RIGHT","BOTTOM"]
+```
+
+このフラグは、必ず同時に2つまでしか利用できません。
+
+**gravity** Extras を付与したのに、フラグを記述しないとQeFaではエラーが発生します。
+
+----
+
+## トーストの今後
+
+今現在は、まだ四角形のトーストしか表示できませんが、将来的に色々な形を表示できるようにしたい。できれば。
