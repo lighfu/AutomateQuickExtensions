@@ -42,6 +42,8 @@ Quick Extensions for Automate はこれ以降、QeFaと呼んでいきます。
 
 ## 使い方
 
+![画像](https://i.gyazo.com/b82d6c4dbcc7b527f6e59d317ac26a76.png)
+
 Automate の Broadcast Send / Recive ブロックを使用して拡張機能を実行、リクエストできます。
 要注意点として、拡張機能の設定で、Service を有効にする必要があります。
 
@@ -417,6 +419,10 @@ FFmpegで処理中の進捗を取得することができます。
 
 
 # ToastOrder
+
+![Toast](https://i.gyazo.com/fbb602dae61fe40799257cfe57a0ccbf.png)
+
+
 ToastOrder は基本四角形のトーストを提供します。
 
 文字色、背景色、サイズ、Padding等を指定してスタイル付けすることができます。
@@ -526,7 +532,11 @@ BB が、16進数のアルファ値。 (00-FF)
 
 使える重力フラグは以下の通りです。
 
-`"LEFT", "RIGHT", "TOP", "BOTTOM", "CENTER"`
+- "**LEFT**"
+- "**RIGHT**"
+- "**TOP**"
+- "**BOTTOM**"
+- "**CENTER**"
 
 必ず単体の重力フラグを指定するときでも、StringArray、文字列配列として扱う必要があります。
 
