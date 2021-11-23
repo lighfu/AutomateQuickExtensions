@@ -1,6 +1,6 @@
 7
 1.3
-v1.3 (Build.7)
+https://github.com/lighfu/AutomateQuickExtensions/releases/download/1.3-build.7/app-release.apk
 このツールを使用してくれてありがとう!
 このアップデートでは、使用しない機能を無力化できる設定を追加したり、コードの細かい改善を行いました。
 これからも、QeFaのサポートをよろしくお願いします。
