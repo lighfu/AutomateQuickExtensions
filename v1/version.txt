@@ -24,3 +24,6 @@ We hope you will continue to support QeFa.
 ・QeFa起動時にAutomateを起動するオプションを追加
 ・起動時の動作を改善
 ・ソースコードや、一部のパッケージの更新。
+
+=~=~=~=~=~=~=~=~=~=~=~=~=~=~
+2021/11/23 lighfu
