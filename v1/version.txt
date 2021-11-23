@@ -1,24 +1,26 @@
-6
-1.2
-https://github.com/lighfu/AutomateQuickExtensions/releases/download/1.2-build.6/app-release.apk
-- OverlayText's rewritten code is now stable
+7
+1.3
+v1.3 (Build.7)
+このツールを使用してくれてありがとう!
+このアップデートでは、使用しない機能を無力化できる設定を追加したり、コードの細かい改善を行いました。
+これからも、QeFaのサポートをよろしくお願いします。
 
-If you want to use OverlayText, use "OverlayTextOrder" in "Broadcast send".
+Thank you for using this tool.
+In this update, we have added a setting that allows you to disable unused features, and made some minor improvements to the code.
+We hope you will continue to support QeFa.
 
-In addition, the OverlayText feature has been added.
-It is now possible to get touch, long touch, and end events.
-
-IDs are now important when internal code is changed.
-Please be very careful not to duplicate IDs.
+・ Added permission settings for executing features (this allows you to disable features you don't use).
+・ Added a way to read the status of the function execution permission settings
+・ Added icon.
+・ Added option to start Automate when QeFa starts.
+・ Improved startup behavior
+・ Updated source code and some packages.
 
 ----------------------
 
-- OverlayText　の書き換えコードが安定しました.
-
-OverlayTextを使用したい場合は、"Broadcast send "の "OverlayTextOrder "を使用してください。
-
-また、OverlayTextの機能が追加されました。
-タッチ、ロングタッチ、終了イベントを取得できるようになりました。
-
-内部コードが変更された際に、IDが重要になりました。
-IDが重複しないように十分注意してください。
+・機能実行の許可設定を追加（これにより使用しない機能は無効化できるようになりました。）
+・機能実行の許可設定の状態を読み取る方法を追加
+・アイコンを追加
+・QeFa起動時にAutomateを起動するオプションを追加
+・起動時の動作を改善
+・ソースコードや、一部のパッケージの更新。
