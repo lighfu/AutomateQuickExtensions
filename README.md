@@ -54,6 +54,7 @@ Serviceを有効にした時点ですべての拡張機能へのアクセスを�
 
 ###
  Extras の使い方
+
 ----
 
 QeFaでは、機能のリクエストに、
@@ -82,8 +83,137 @@ QeFa は１人の開発者によって作成されています。
 
 ----
 
+# Status 取得
+QeFa は、Broadcast Send(結果待ち) でQeFa自体のステータスを取得することができます。
+
+例えば、拡張機能が利用できるかどうか、拡張機能が許可されたかどうか…などなど。
+
+## 取得方法
+
+> "**Broadcast decision?**" ブロックを使用します。
+
+QeFaから状態を知るには、以下のクラス名を使用します。
+
+**Class**: `com.lighfu.quickextensions.AppStatusReceiver`
+
+ステータス名は、**Action** に設定します。
+
+現在使用できるステータス名は以下の通りです。
+
+- checkMainService
+- checkOverlayPermission
+- checkStartUp
+- checkUpdateCheckWhenStartApp
+- checkExecutableFunction
+
+---
+
+### checkMainService
+状態がQeFa側で確認された場合は、直ちにブロックの動作は続行されます。
+
+戻り値（code）:  code = 0 || code = -1
+
+![画像](https://i.gyazo.com/9ea10c00e297a6d55e5eea7f1382f0fa.png)
+
+上記の式が、
+
+条件 |  サービス
+---------|--------------------
+成立(Yes)     | 無効(Off)
+不成立(No)  | 有効(On)
+
+----
 
 
+### checkOverlayPermission
+QeFaでの画面上にオーバーレイ表示する権限が取得しているか、していないかを確認できます。
+
+戻り値（code）: code = 1 ならば、取得済み。
+
+戻り値（code）: code = 0 ならば、未許可。
+
+Android 6.0+ ではこのチェックは有用ですが、それ以下のバージョンでは、結果は必ず "code = 1" になります。
+
+
+----
+
+
+### checkStartUp
+QeFaの自動起動が有効か無効かを確認できます。
+
+戻り値（code）: code = 1 ならば、有効。
+
+戻り値（code）: code = 0 ならば、無効。
+
+
+----
+
+
+### checkUpdateCheckWhenStartApp
+QeFaの起動時にアップデートを自動で確認するかしないかの設定を取得できます。
+
+戻り値（code）: code = 1 ならば、確認する。
+
+戻り値（code）: code = 0 ならば、確認されない。
+
+
+----
+
+
+### checkExecutableFunction
+QeFa v1.3.0 から追加された、"オーダー許可" の状態を確認できます。
+このアクションには、追加のExtrasが必要になります。
+
+#### Extras:
+```
+{
+    "function" : "[Order名]"
+}
+```
+
+上記のようなExtrasを記述します。
+
+それぞれのオーダーには名称があります。その名称を **[Order名]** で利用できます。**[]** は必要ありません。
+
+- FFmpegOrder
+- OverlayTextOrder
+- ToastOrder
+- DialogOrder
+
+#### 戻り値（code）
+
+戻り値（code）: code = 1 ならば、有効。
+
+戻り値（code）: code = 0 ならば、無効。
+
+
+----
+
+
+
+# QeFaイベントを取得する
+QeFa 内では、何かイベントが発生するとブロードキャストを送信するようになっています。
+
+> 「**Broadcast Recive**」 ブロックを使用します
+
+QeFaから何かイベント取得したい場合は、あらかじめ、「Broadcast recive」ブロックを実行させます。
+
+たとえば、"Service" を有効にした時のイベントを取得したい場合は、以下のアクション名でブロードキャストが送信されます。
+
+## QeFa.StartService
+QeFaのサービスを有効にしたときに受信できるアクション。
+
+![画像](https://i.gyazo.com/f8863932228edc6a2e652966997bd6e0.png)
+
+取得できるExtras: 無し
+
+「Broadcast recive」ブロックはこのアクションを取得するまで待機し続けます。
+
+
+
+
+----
+----
 
 # OverlayText
 
@@ -107,6 +237,10 @@ TextView を画面上に表示することが可能です。
 - NoTouch を利用するとタッチを無視できますが、手動で消すことができなくなります。
 - (調査中ですが)クラッシュすることがあります。
 
+うまく動作しない（呼び出した直後にQeFaがクラッシュする）場合は、QeFaのアプリケーション設定から、画面上にオーバーレイ表示を許可する権限が与えられていないために、クラッシュしている可能性があります。
+そのため、その権限を許可してみてください。
+また、Serviceが有効になっていることも確認してください。
+
 
 ##  オーバーレイを開始する
 > "Broadcast Send" ブロックを使用します。
@@ -115,9 +249,10 @@ TextView を画面上に表示することが可能です。
 
 **class**: `com.lighfu.quickextensions.orders.OverlayTextOrder`
 
+**Action**: **`Order`**
 
-**id** : `OverlayText ID (String)`
-**id**: 制御IDを設定
+**id** : `OverlayText ID (String)` 制御IDを設定
+
 > 制御IDをしっかりと指定してください。このIDを元に要素をいつでも変更できたり、停止させることが可能になります。
 
 
@@ -133,7 +268,6 @@ TextView を画面上に表示することが可能です。
 **Action**: **`Order`**
 
 **オーバーレイ設定を変更、またはオーバーレイを削除したい場合にこのクラスを使用してください。**
-
 
 ----
  
@@ -154,6 +288,7 @@ TextView を画面上に表示することが可能です。
 "text" as String: "Hello Automate!"
 "text": "Hello QeFa!"
 ```
+
 ----
 
 **size**: フォントサイズ px (**as Float**)
