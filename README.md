@@ -13,12 +13,12 @@ Quick Extensions for Automate はこれ以降、QeFaと呼んでいきます。
 
 ## 機能の対応
 
-| Orders  |   Start     | Support  | Description |
-|-------------|---------------|----------------|----------------------|
-| OverlayTextOrder | t1.0a | Android 4.1 - 11 | None |
-| DialogOrder    | 1.0           | Android 4.0+           | None |
-| FFmpegOrder | 1.1           | Android 4.1 - 10      | 今後は別パッケージをインストールして利用が可能になるよう調節します。 |
-| ToastOrder     | 1.0.alpha | Android 4.0+           | None |
+|      Orders      |     Start     |      Support     |     Description      |
+|------------------|---------------|------------------|----------------------|
+| OverlayTextOrder | t1.0a         | Android 4.1 - 11 | None |
+| DialogOrder      | 1.0           | Android 4.0+     | None |
+| FFmpegOrder      | 1.1           | Android 4.1 - 10 | 今後は別パッケージをインストールして利用が可能になるよう調節します。 |
+| ToastOrder       | 1.0.alpha     | Android 4.0+     | None |
 
 ## 使い方
 
@@ -50,16 +50,16 @@ QeFaでは、機能のリクエストに、
 - 実行権限（厳格モード）
 
 ## ライセンス
-複製や改竄は認めていません。Github のリリースから必ずダウンロードしてください。FFmpeg, FFmpeg-mobile に感謝します。
- 
+現在複製や改竄は認めていません。Github のリリースから必ずダウンロードしてください。
+また、Github 以外で、リリースを公開していません。
+
+今後、MITライセンスにするかもしれません。その場合は、ソースコードをここに全て置きたいと思います。
+
 
 # QeFa 開発
 QeFa は１人の開発者によって作成されています。
 不完全なレイアウト、動作などが多くあると思われます。Github の Issues に問題を詳しく報告することで迅速に修正を行うことができます。
 よろしくお願いします。
-
-
-
 
 ----
 
@@ -97,9 +97,9 @@ QeFaから状態を知るには、以下のクラス名を使用します。
 
 上記の式が、
 
-条件 |  サービス
----------|--------------------
-成立(Yes)     | 無効(Off)
+条件        |  サービス
+------------|--------------------
+成立(Yes)   | 無効(Off)
 不成立(No)  | 有効(On)
 
 ----
@@ -408,13 +408,9 @@ resultCode as Int, resultStatus as String
 
 # FFmpegOrder
 
-![mobile-ffmpeg-logo-v7](https://raw.githubusercontent.com/tanersener/mobile-ffmpeg/master/docs/assets/mobile-ffmpeg-logo-v7.png)
+![https://raw.githubusercontent.com/tanersener/mobile-ffmpeg/master/docs/assets/mobile-ffmpeg-logo-v7.png](https://github.com/tanersener/ffmpeg-kit/raw/main/docs/assets/ffmpeg-kit-icon-v9.png)
 
-FFmpegMobile: [https://github.com/tanersener/mobile-ffmpeg](https://github.com/tanersener/mobile-ffmpeg)
-
-QeFaでは FFmpegMobile を使用していますが、このプロジェクトは停止しているため、[FFmpeg-Kit](https://github.com/tanersener/ffmpeg-kit) にパッケージを変更する予定です。
-
-
+FFmpegKit: [https://github.com/tanersener/ffmpeg-kit](https://github.com/tanersener/ffmpeg-kit)
 
 FFmpegOrder は、FFmpegコマンドラインを提供する特別な機能です。
 
@@ -425,11 +421,12 @@ FFmpegのほぼ全ての機能を利用することができ、
 
 ## 必須条件
 Android 4.1 - 10 までのデバイスでのみ動作します。
-Amdroid 11 は回避策を検討していますが、実装できていません。
+Amdroid 11+ では回避策を検討していますが、実装できていません。
 
 ## 注意点
 - 並行処理ができるようになっていますが、処理を行うとかなりのシステムリソースを消費します。
 - 多用すると端末全体のパフォーマンスが低下するので注意してください。
+- **既存のファイルに上書きすることはありません。保存先にすでにファイルが存在する場合は処理に即失敗します。**
 
 ## FFmpeg を実行する
 Broacast Send ブロックを使用して、FFmpegコマンドを実行できます。
@@ -441,8 +438,8 @@ Broacast Send ブロックを使用して、FFmpegコマンドを実行できま
 **Action**: `Order`
 
 **_Extras_**:
-"id" as String: 任意のID文字列（重複は許可されません）
-"cmd" as String: 任意の実行コマンド（'`ffmpeg `'は不要）
+"id" as String: 任意のID文字列
+"cmd" as String: 任意の実行コマンド（'`ffmpeg `'は不要）（`-i` は必要です。）
 
 > id の指定を必ず行ってください。id は動作を識別するほか、ユーザー側で操作を可能にするものです。
 
